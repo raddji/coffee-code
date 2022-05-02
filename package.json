@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace coffee-code-client build",
+    "dev": "yarn workspace coffee-code-server dev",
+    "dev:debug": "yarn workspace coffee-code-server dev:debug",
+    "heroku-postbuild": "yarn workspace coffee-code-client build",
+    "start": "yarn workspace coffee-code-server start",
+    "dev:cypress": "yarn workspace coffee-code-server dev:e2e",
+    "e2e:open": "yarn workspace coffee-code-e2e e2e:open",
+    "e2e:run": "yarn workspace coffee-code-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.19"
+  }
+}

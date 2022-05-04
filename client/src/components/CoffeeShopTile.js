@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 const CoffeeShopTile = (props) => {
   const { name, city, hours, wifi, parking } = props.coffeeShop
@@ -8,7 +9,9 @@ const CoffeeShopTile = (props) => {
 
   return (
     <div>
-      <h5>{name}</h5>
+      <Link to={`/coffee-shops/${id}`}>
+        <h5>{name}</h5>
+      </Link>
       <ul>
         <li>{city}</li>
         <li>{hours}</li>

@@ -24,15 +24,6 @@ const CoffeeShopShowPage = (props) => {
     getCoffeeShop()
   }, [])
 
-  let parking = ""
-  let wifi = ""
-  if (coffeeShop.parking) {
-    parking = <li>Parking Available</li>
-  }
-  if (coffeeShop.wifi) {
-    wifi = <li>Wifi Available</li>
-  }
-
   return (
     <div>
       <h1>{coffeeShop.name}</h1>
@@ -43,10 +34,9 @@ const CoffeeShopShowPage = (props) => {
       <p>{coffeeShop.hours}</p>
 
       <ul>
-        {parking}
-        {wifi}
+        {coffeeShop.parking ? <li>Parking Available</li> : <li>No Parking</li>}
+        {coffeeShop.wifi ? <li> Wifi Available</li> : <li>No Wifi</li>}
       </ul>
-      
     </div>
   )
 }

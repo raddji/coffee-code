@@ -1,16 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-const CoffeeShopTile = ({ id, name, city, hours, wifi, parking }) => {
-  let wifiItem = ""
-  if (wifi) {
-    wifiItem = <li>Wifi Available</li>
-  }
-
-  let parkingItem = ""
-  if (parking) {
-    parkingItem = <li>Parking Available</li>
-  }
+const CoffeeShopTile = (props) => {
+  const { name, city, hours, wifi, parking } = props.coffeeShop
 
   return (
     <div>
@@ -20,8 +12,8 @@ const CoffeeShopTile = ({ id, name, city, hours, wifi, parking }) => {
       <ul>
         <li>{city}</li>
         <li>{hours}</li>
-        {wifiItem}
-        {parkingItem}
+        {wifi ? <li>Wifi Available</li> : <li>No Wifi</li>}
+        {parking ? <li>Parking Available</li> : <li>No Parking</li>}
       </ul>
     </div>
   );

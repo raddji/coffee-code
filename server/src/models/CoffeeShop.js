@@ -4,7 +4,7 @@ class CoffeeShop extends Model {
   static get tableName() {
     return "coffeeShops";
   }
-  
+
   static get jsonSchema() {
     return {
       type: "object",
@@ -15,8 +15,8 @@ class CoffeeShop extends Model {
         address: { type: "string", minLength: 1, maxLength: 255 },
         zip: { type: "string", minLength: 1, maxLength: 255 },
         hours: { type: "string", minLength: 1, maxLength: 255 },
-        wifi: { type: "boolean" },
-        parking: { type: "boolean" },
+        wifi: { type: ["boolean", "string"] },
+        parking: { type: ["boolean", "string"] },
       },
     };
   }

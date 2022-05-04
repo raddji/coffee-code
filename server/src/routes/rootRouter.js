@@ -4,16 +4,11 @@ import usersRouter from "./api/v1/usersRouter.js";
 import clientRouter from "./clientRouter.js";
 import coffeeShopsRouter from "./api/v1/coffeeShopsRouter.js"
 
-
-
 const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
 
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
 rootRouter.use("/api/v1/users", usersRouter); 
 rootRouter.use("/api/v1/coffee-shops", coffeeShopsRouter)
-//place your server-side routes here
 
 export default rootRouter;
-
-

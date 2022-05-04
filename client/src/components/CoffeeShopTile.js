@@ -3,9 +3,10 @@ import { Link } from "react-router-dom"
 
 const CoffeeShopTile = (props) => {
   const { name, city, hours, wifi, parking } = props.coffeeShop
-  const wifiDisplay = wifi ? wifiDisplay = <li>Wifi is available.</li> : wifiDisplay = <li>Wifi not available.</li>
-  const parkingDisplay = parking ? parkingDisplay = <li>Parking is available.</li> : parkingDisplay = <li>Parking not available.</li>
-  
+
+  const wifiDisplay = wifi ? "Wifi Available" : "No Wifi"
+  const parkingDisplay = parking ? "Parking Available" : "No Parking"
+
   return (
     <div>
       <Link to={`/coffee-shops/${id}`}>
@@ -14,8 +15,8 @@ const CoffeeShopTile = (props) => {
       <ul>
         <li>{city}</li>
         <li>{hours}</li>
-        {wifiDisplay}
-        {parkingDisplay}
+        <li>{wifiDisplay}</li>
+        <li>{parkingDisplay}</li>
       </ul>
     </div>
   );

@@ -4,6 +4,7 @@ class CoffeeShop extends Model {
   static get tableName() {
     return "coffeeShops";
   }
+  
   static get jsonSchema() {
     return {
       type: "object",

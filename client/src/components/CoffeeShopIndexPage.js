@@ -23,7 +23,7 @@ const CoffeeShopIndexPage = (props) => {
     getCoffeeShops();
   }, []);
 
-  const coffeeShopsTiles = coffeeShops.map((coffeeShop) => {
+  const coffeeShopTiles = coffeeShops.map((coffeeShop) => {
     return (
       <CoffeeShopTile
         key={coffeeShop.id}
@@ -39,7 +39,14 @@ const CoffeeShopIndexPage = (props) => {
     );
   });
 
-  return <div>{coffeeShopsTiles}</div>;
+  return (
+    <div>
+      <h2>Placeholder Headline</h2>
+      <div>
+        {coffeeShopTiles}
+      </div>
+    </div>
+  )
 };
 
 export default CoffeeShopIndexPage;

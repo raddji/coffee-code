@@ -12,4 +12,13 @@ coffeeShopsRouter.get("/", async (req, res) => {
   }
 });
 
+coffeeShopsRouter.get("/:id", async (req, res) => {
+  try {
+    const coffeeShop = await CoffeeShop.query().findById(req.params.id)
+    return res.status(200).json({ coffeeShop: coffeeShop })
+  } catch(errors) {
+    return res.status(500).json({ errors: errors })
+  }
+})
+
 export default coffeeShopsRouter;

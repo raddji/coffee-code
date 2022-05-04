@@ -1,19 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
-const CoffeeShopTile = ({ name, city, hours, wifi, parking }) => {
+const CoffeeShopTile = ({ id, name, city, hours, wifi, parking }) => {
   let wifiItem = ""
   if (wifi) {
-    wifiItem = <li>Wi-fi is Available</li>
+    wifiItem = <li>Wifi Available</li>
   }
 
   let parkingItem = ""
   if (parking) {
-    parkingItem = <li>Parking is Available</li>
+    parkingItem = <li>Parking Available</li>
   }
 
   return (
     <div>
-      <h5>{name}</h5>
+      <Link to={`/coffee-shops/${id}`}>
+        <h5>{name}</h5>
+      </Link>
       <ul>
         <li>{city}</li>
         <li>{hours}</li>

@@ -12,8 +12,8 @@ const CoffeeShopTile = (props) => {
       <ul>
         <li>{city}</li>
         <li>{hours}</li>
-        {wifiDisplay}
-        {parkingDisplay}
+        <li>{wifiDisplay}</li>
+        <li>{parkingDisplay}</li>
       </ul>
     </div>
   );

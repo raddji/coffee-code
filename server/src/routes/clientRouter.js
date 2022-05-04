@@ -9,7 +9,3 @@ router.get(clientRoutes, (req, res) => {
 });
 
 export default router;
-
-
-
-

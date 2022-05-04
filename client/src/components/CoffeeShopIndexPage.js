@@ -6,7 +6,7 @@ const CoffeeShopIndexPage = (props) => {
 
   const getCoffeeShops = async () => {
     try {
-      const response = await fetch(`/api/v1/coffee-shops`);
+      const response = await fetch("/api/v1/coffee-shops");
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
@@ -27,21 +27,14 @@ const CoffeeShopIndexPage = (props) => {
     return (
       <CoffeeShopTile
         key={coffeeShop.id}
-        id={coffeeShop.id}
-        name={coffeeShop.name}
-        city={coffeeShop.city}
-        address={coffeeShop.address}
-        zip={coffeeShop.zip}
-        hours={coffeeShop.hours}
-        wifi={coffeeShop.wifi}
-        parking={coffeeShop.parking}
+        coffeeShop={coffeeShop}
       />
     );
   });
 
   return (
     <div>
-      <h2>Placeholder Headline</h2>
+      <h2>Code Brew Spots</h2>
       <div>
         {coffeeShopTiles}
       </div>

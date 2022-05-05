@@ -1,83 +1,81 @@
-import React, { useState, useEffect } from 'react'
-import NewReviewForm from './newReviewForm'
-import CoffeeShopReviewList from './CoffeeShopReviewList'
-import translateServerErrors from '../services/translateServerErrors.js'
+import React, { useState, useEffect } from "react";
+import NewReviewForm from "./newReviewForm";
+import CoffeeShopReviewList from "./CoffeeShopReviewList";
+import ErrorList from "./layout/ErrorList";
+import translateServerErrors from "../services/translateServerErrors.js";
 
 const CoffeeShopShowPage = (props) => {
-  const [coffeeShop, setCoffeeShop] = useState({})
-  const [errors, setErrors] = useState({})  
+  const [coffeeShop, setCoffeeShop] = useState({ reviews: [] });
+  const [errors, setErrors] = useState({});
 
-  const { id } = props.match.params
+  const { id } = props.match.params;
   const getCoffeeShop = async () => {
     try {
-      const response = await fetch(`/api/v1/coffee-shops/${id}`)
+      const response = await fetch(`/api/v1/coffee-shops/${id}`);
       if (!response.ok) {
-        throw new Error(`${response.status} (${response.statusText})`)
+        throw new Error(`${response.status} (${response.statusText})`);
       }
-      const body = await response.json()
-      setCoffeeShop(body.coffeeShop)
-    } catch(error) {
-      console.error(error)
+      const body = await response.json();
+      setCoffeeShop(body.coffeeShop);
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
-    getCoffeeShop()
-  }, [])
+    getCoffeeShop();
+  }, []);
 
   const postReview = async (reviewFormData) => {
     try {
       const response = await fetch(`/api/v1/coffee-shops/${id}/reviews`, {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json" 
+          "Content-Type": "application/json",
         }),
-        body: JSON.stringify(reviewFormData)
-      })
-      if(!response.ok) {
+        body: JSON.stringify(reviewFormData),
+      });
+      if (!response.ok) {
         if (response.status === 422) {
-          const body = await response.json()
-          const newErrors = translateServerErrors(body.errors)
-          return setErrors(newErrors)
+          const body = await response.json();
+          const newErrors = translateServerErrors(body.errors);
+          return setErrors(newErrors);
         } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
         }
       } else {
-        const body = await response.json()
-        const updatedReviews = coffeeShop.reviews.concat(body.review)
-        setErrors([])
-        setCoffeeShop({...coffeeShop, reviews: updatedReviews})
+        const body = await response.json();
+        const updatedReviews = coffeeShop.reviews.concat(body.review);
+        setErrors([]);
+        setCoffeeShop({ ...coffeeShop, reviews: updatedReviews });
       }
-
-    } catch (error) { 
-      console.error(`Error in fetch: ${error.message}`)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
     }
-  }
+  };
 
-
-  const wifiDisplay = coffeeShop.wifi ? "Wifi Available" : "No Wifi"
-  const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking"
+  const wifiDisplay = coffeeShop.wifi ? "Wifi Available" : "No Wifi";
+  const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking";
 
   return (
     <div>
       <h1>{coffeeShop.name}</h1>
       <p>{coffeeShop.address}</p>
-      <p>{coffeeShop.city} {coffeeShop.zip}</p>
+      <p>
+        {coffeeShop.city} {coffeeShop.zip}
+      </p>
       <p>{coffeeShop.hours}</p>
       <ul>
         <li>{wifiDisplay}</li>
         <li>{parkingDisplay}</li>
       </ul>
-      <CoffeeShopReviewList
-        id={coffeeShop.id}
-      />
-      <NewReviewForm 
-        postReview={postReview}
-      />
+      <CoffeeShopReviewList reviews={coffeeShop.reviews} />
+      <ErrorList errors={errors} />
+      <NewReviewForm postReview={postReview} />
     </div>
-  )
-}
+  );
+};
 
-export default CoffeeShopShowPage
+export default CoffeeShopShowPage;

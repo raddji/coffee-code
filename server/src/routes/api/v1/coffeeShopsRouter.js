@@ -2,6 +2,7 @@ import express from "express";
 import { CoffeeShop } from "../../../models/index.js";
 import { ValidationError } from "objection";
 import cleanUserInput from "../../../services/cleanUserInput.js";
+import coffeeShopReviewsRouter from "./coffeeShopReviewsRouter.js";
 
 const coffeeShopsRouter = new express.Router();
 
@@ -35,5 +36,6 @@ coffeeShopsRouter.post("/", async (req, res) => {
     return res.status(500).json({ errors: err })
   }
 })
+coffeeShopsRouter.use("/:id/reviews", coffeeShopReviewsRouter)
 
 export default coffeeShopsRouter;

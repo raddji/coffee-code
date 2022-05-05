@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CoffeeShopTile from "./CoffeeShopTile";
 import NewCoffeeShopForm from "./NewCoffeeShopForm";
-import translateServerErrors from "../services/translateServerErrors"
 import ErrorList from "./layout/ErrorList"
+import translateServerErrors from "../services/translateServerErrors"
 
 const CoffeeShopIndexPage = (props) => {
   const [coffeeShops, setCoffeeShops] = useState([]);
@@ -70,6 +70,7 @@ const CoffeeShopIndexPage = (props) => {
         <ErrorList errors={errors} />
         <NewCoffeeShopForm postCoffeeShop={postCoffeeShop}/>
       </div>
+      <NewReviewForm />
     </div>
   )
 };

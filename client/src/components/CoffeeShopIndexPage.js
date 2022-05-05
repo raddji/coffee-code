@@ -38,16 +38,14 @@ const CoffeeShopIndexPage = (props) => {
         if (response.status === 422) {
           const body = await response.json()
           const newErrors = translateServerErrors(body.errors)
-            setErrors(newErrors)
+          setErrors(newErrors)
         } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          throw (errorMessage)
+          throw new Error(`${response.status} (${response.statusText})`)
         }
       } else {
         const body = await response.json()
-        //const newCoffeeShop = body.newCoffeeShop
         setErrors([])
-        setCoffeeShops([...coffeeShops, body])
+        setCoffeeShops([...coffeeShops, body.newCoffeeShop])
       }
     } catch (err) {
       console.error(err)
@@ -69,10 +67,8 @@ const CoffeeShopIndexPage = (props) => {
       <div>
         {coffeeShopTiles}
         <h2> Add a New Coffee Shop </h2>
-       <ErrorList errors={errors} />
-        <NewCoffeeShopForm 
-        postCoffeeShop={postCoffeeShop}/>
-
+        <ErrorList errors={errors} />
+        <NewCoffeeShopForm postCoffeeShop={postCoffeeShop}/>
       </div>
     </div>
   )

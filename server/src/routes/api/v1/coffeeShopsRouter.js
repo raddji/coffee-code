@@ -1,6 +1,7 @@
 import express from "express";
 import { CoffeeShop } from "../../../models/index.js";
 import { ValidationError } from "objection";
+import cleanUserInput from "../../../services/cleanUserInput.js";
 
 const coffeeShopsRouter = new express.Router();
 
@@ -14,10 +15,9 @@ coffeeShopsRouter.get("/", async (req, res) => {
 });
 
 coffeeShopsRouter.post("/", async (req, res) => {
-  const newCoffeeShop = await CoffeeShop.query().insertAndFetch(req.body)
-  console.log(newCoffeeShop)
   try {
-   
+    const formData = cleanUserInput(req.body)   
+    const newCoffeeShop = await CoffeeShop.query().insertAndFetch(formData)
     return res.status(201).json({ newCoffeeShop })
   } catch (err) {
     if (err instanceof ValidationError) {
@@ -26,4 +26,5 @@ coffeeShopsRouter.post("/", async (req, res) => {
     return res.status(500).json({ errors: err })
   }
 })
+
 export default coffeeShopsRouter;

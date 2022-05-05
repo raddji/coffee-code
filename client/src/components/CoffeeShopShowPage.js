@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import NewReviewForm from './newReviewForm'
+import NewReviewForm from './NewReviewForm.js'
+import translateServerErrors from '../services/translateServerErrors.js'
 
 const CoffeeShopShowPage = (props) => {
   const [coffeeShop, setCoffeeShop] = useState({})
-  
+  const [errors, setErrors] = useState({})  
+
   const { id } = props.match.params
   const getCoffeeShop = async () => {
     try {
@@ -22,6 +24,36 @@ const CoffeeShopShowPage = (props) => {
     getCoffeeShop()
   }, [])
 
+  const postReview = async (reviewFormData) => {
+    try {
+      const response = await fetch(`/api/v1/coffee-shops/${id}/reviews`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json" 
+        }),
+        body: JSON.stringify(reviewFormData)
+      })
+      if(!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          return setErrors(newErrors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw(error)
+        }
+      } else {
+        const body = await response.json()
+        const updatedReviews = coffeeShop.reviews.concat(body.review)
+        setErrors([])
+        setCoffeeShop({...coffeeShop, reviews: updatedReviews})
+      }
+
+    } catch (error) { 
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
 
 
   const wifiDisplay = coffeeShop.wifi ? "Wifi Available" : "No Wifi"
@@ -37,7 +69,9 @@ const CoffeeShopShowPage = (props) => {
         <li>{wifiDisplay}</li>
         <li>{parkingDisplay}</li>
       </ul>
-      <NewReviewForm />
+      <NewReviewForm 
+        postReview={postReview}
+      />
     </div>
   )
 }

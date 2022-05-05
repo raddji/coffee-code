@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CoffeeShopTile from "./CoffeeShopTile";
+import NewReviewForm from "./NewReviewForm";
 
 const CoffeeShopIndexPage = (props) => {
   const [coffeeShops, setCoffeeShops] = useState([]);
@@ -38,6 +39,7 @@ const CoffeeShopIndexPage = (props) => {
       <div>
         {coffeeShopTiles}
       </div>
+      <NewReviewForm />
     </div>
   )
 };

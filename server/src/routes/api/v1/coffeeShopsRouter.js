@@ -1,5 +1,6 @@
 import express from "express";
 import { CoffeeShop } from "../../../models/index.js";
+import coffeeShopReviewsRouter from "./coffeeShopReviewsRouter.js";
 
 const coffeeShopsRouter = new express.Router();
 
@@ -20,5 +21,7 @@ coffeeShopsRouter.get("/:id", async (req, res) => {
     return res.status(500).json({ errors: errors })
   }
 })
+
+coffeeShopsRouter.use("/:id/reviews", coffeeShopReviewsRouter)
 
 export default coffeeShopsRouter;

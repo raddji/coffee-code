@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 
 const CoffeeShopTile = (props) => {
-  const { name, city, hours, wifi, parking } = props.coffeeShop
+  const { name, city, hours, wifi, parking, id } = props.coffeeShop
 
   const wifiDisplay = wifi ? "Wifi Available" : "No Wifi"
   const parkingDisplay = parking ? "Parking Available" : "No Parking"

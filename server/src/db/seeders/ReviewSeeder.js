@@ -5,6 +5,7 @@ class ReviewSeeder {
     const reviewsData = [
       {
         coffeeShopId: 1,
+        userId: 1,
         rating: 2,
         price: 4,
         noiseLevel: 3,
@@ -13,6 +14,7 @@ class ReviewSeeder {
       },
       {
         coffeeShopId: 2,
+        userId: 1,
         rating: 1,
         price: 2,
         noiseLevel: 4,

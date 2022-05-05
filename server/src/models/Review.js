@@ -1,4 +1,4 @@
-const Model = require("./Model");
+const Model = require("./Model.js");
 
 class Review extends Model {
   static get tableName() {
@@ -15,6 +15,28 @@ class Review extends Model {
         noiseLevel: { type: ["integer", "string"] },
         vibe: { type: "string" },
         reviewText: { type: "string" },
+      },
+    };
+  }
+
+  static get relationMappings() {
+    const { User, CoffeeShop } = require("./index.js");
+    return {
+      coffeeShops: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: CoffeeShop,
+        join: {
+          from: "reviews.coffeeShopId",
+          to: "coffeeShop.id",
+        },
+      },
+      users: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: User,
+        join: {
+          from: "reviews.userId",
+          to: "users.id",
+        },
       },
     };
   }

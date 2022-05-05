@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import NewReviewForm from './newReviewForm'
+import CoffeeShopReviewList from './CoffeeShopReviewList'
 
 const CoffeeShopShowPage = (props) => {
   const [coffeeShop, setCoffeeShop] = useState({})
@@ -37,6 +38,9 @@ const CoffeeShopShowPage = (props) => {
         <li>{wifiDisplay}</li>
         <li>{parkingDisplay}</li>
       </ul>
+      <CoffeeShopReviewList
+        id={coffeeShop.id}
+      />
       <NewReviewForm />
     </div>
   )

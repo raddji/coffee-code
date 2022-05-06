@@ -3,22 +3,21 @@ import { Review } from "../../../models/index.js";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { ValidationError } from "objection";
 
-const coffeeShopReviewsRouter = new express.Router();
+const coffeeShopReviewsRouter = new express.Router({ mergeParams: true });
 
 coffeeShopReviewsRouter.post("/", async (req, res) => {
   const { id } = req.params;
   try {
     const reviewBody = req.body;
     const cleanBodyData = cleanUserInput(reviewBody);
+
     const review = await Review.query().insertAndFetch({
       ...cleanBodyData,
       coffeeShopId: id,
       userId: req.user.id,
     });
-
     return res.status(201).json({ review });
   } catch (error) {
-    console.log(error);
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }

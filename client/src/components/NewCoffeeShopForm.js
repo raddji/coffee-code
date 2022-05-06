@@ -11,7 +11,6 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
     parking: ""
   })
 
-
   const handleInputChange = event => {
     setNewCoffeeShop({
       ...newCoffeeShop,
@@ -39,6 +38,7 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
 
   return (
     <form onSubmit={handleSubmit} >
+
       <label htmlFor="name">
         Name:
         <input

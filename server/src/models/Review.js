@@ -27,7 +27,7 @@ class Review extends Model {
         modelClass: CoffeeShop,
         join: {
           from: "reviews.coffeeShopId",
-          to: "coffeeShop.id",
+          to: "coffeeShops.id",
         },
       },
       users: {

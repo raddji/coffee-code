@@ -65,7 +65,6 @@ const NewReviewForm = ({ postReview }) => {
         Description:
         <input type="text" name="reviewText" placeholder="Tell us more:" onChange={handleChange} />
       </label>
-
       <input type="submit" value="Submit" />
     </form>
   );

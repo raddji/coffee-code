@@ -12,3 +12,16 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+.review-rating {
+  display: flex;
+}
+
+.icon-list {
+  list-style: none;
+  display: flex;
+}
+
+.review-icon {
+  height: 15px;
+}

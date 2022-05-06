@@ -1,4 +1,4 @@
-import ReviewSerializer from "./ReviewSerializer";
+import ReviewSerializer from "./ReviewSerializer.js";
 
 class CoffeeShopSerializer {
   static getSummary(coffeeShop) {
@@ -14,7 +14,7 @@ class CoffeeShopSerializer {
     return serialzedCoffeeShop;
   }
 
-  static getDetails(coffeeShop) {
+  static async getDetails(coffeeShop) {
     const summarizedCoffeeShop = this.getSummary(coffeeShop);
 
     const reviews = await coffeeShop.$relatedQuery("reviews");

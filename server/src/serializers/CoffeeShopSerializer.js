@@ -1,3 +1,4 @@
+import ReviewSerializer from "./ReviewSerializer";
 
 class CoffeeShopSerializer {
   static getSummary(coffeeShop) {
@@ -13,5 +14,17 @@ class CoffeeShopSerializer {
     return serialzedCoffeeShop;
   }
 
+  static getDetails(coffeeShop) {
+    const summarizedCoffeeShop = this.getSummary(coffeeShop);
 
+    const reviews = await coffeeShop.$relatedQuery("reviews");
+
+    summarizedCoffeeShop.reviews = reviews.map((review) => {
+      return ReviewSerializer.getSummary(review);
+    })
+
+    return summarizedCoffeeShop;
+  }
 }
+
+export default CoffeeShopSerializer

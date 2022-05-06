@@ -20,14 +20,14 @@ coffeeShopsRouter.get("/:id", async (req, res) => {
     const coffeeShop = await CoffeeShop.query().findById(req.params.id)
     coffeeShop.reviews = await coffeeShop.$relatedQuery("reviews")
     return res.status(200).json({ coffeeShop: coffeeShop })
-  } catch(errors) {
+  } catch (errors) {
     return res.status(500).json({ errors: errors })
   }
 })
 
 coffeeShopsRouter.post("/", async (req, res) => {
   try {
-    const formData = cleanUserInput(req.body)   
+    const formData = cleanUserInput(req.body)
     const newCoffeeShop = await CoffeeShop.query().insertAndFetch(formData)
     return res.status(201).json({ newCoffeeShop })
   } catch (err) {
@@ -37,6 +37,7 @@ coffeeShopsRouter.post("/", async (req, res) => {
     return res.status(500).json({ errors: err })
   }
 })
+
 coffeeShopsRouter.use("/:id/reviews", coffeeShopReviewsRouter)
 
 export default coffeeShopsRouter;

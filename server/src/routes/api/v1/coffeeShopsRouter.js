@@ -41,6 +41,6 @@ coffeeShopsRouter.post("/", async (req, res) => {
   }
 })
 
-coffeeShopsRouter.use("/:id/reviews", coffeeShopReviewsRouter)
+coffeeShopsRouter.use("/:coffeeShopId/reviews", coffeeShopReviewsRouter)
 
 export default coffeeShopsRouter;

@@ -1,19 +1,20 @@
 import express from "express";
 import { Review } from "../../../models/index.js";
+import reviewVotesRouter from "./reviewVotesRouter.js";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { ValidationError } from "objection";
 
 const coffeeShopReviewsRouter = new express.Router({ mergeParams: true });
 
 coffeeShopReviewsRouter.post("/", async (req, res) => {
-  const { id } = req.params;
+  const { coffeeShopId } = req.params;
   try {
     const reviewBody = req.body;
     const cleanBodyData = cleanUserInput(reviewBody);
 
     const review = await Review.query().insertAndFetch({
       ...cleanBodyData,
-      coffeeShopId: id,
+      coffeeShopId: coffeeShopId,
       userId: req.user.id,
     });
     return res.status(201).json({ review });
@@ -24,5 +25,7 @@ coffeeShopReviewsRouter.post("/", async (req, res) => {
     return res.status(500).json({ errors: error });
   }
 });
+
+coffeeShopReviewsRouter.use("/:reviewId/votes", reviewVotesRouter)
 
 export default coffeeShopReviewsRouter;

@@ -18,7 +18,7 @@ class ReviewSeeder {
         rating: 1,
         price: 2,
         noiseLevel: 4,
-        vibe: " Loud and busy during rush hours",
+        vibe: "Loud and busy during rush hours",
         reviewText: "Not a big fan of their coffee.",
       },
     ];

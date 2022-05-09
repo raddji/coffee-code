@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NewReviewForm from "./newReviewForm";
-import CoffeeShopReviewList from "./CoffeeShopReviewList";
 import ErrorList from "./layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ReviewTile from "./ReviewTile";

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import isValid from "../services/isValid.js";
 
 const NewReviewForm = ({ postReview }) => {
   const [newReview, setNewReview] = useState({
@@ -16,21 +17,9 @@ const NewReviewForm = ({ postReview }) => {
     });
   };
 
-  const isValid = () => {
-    const requiredFields = ["rating", "vibe", "reviewText"];
-
-    for (let i = 0; i < requiredFields.length; i++) {
-      let currentFieldValue = requiredFields[i];
-      if (newReview[currentFieldValue] === "") {
-        return false;
-      }
-    }
-    return true;
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (isValid()) {
+    if (isValid(newReview)) {
       postReview(newReview);
       clearForm();
     }
@@ -112,13 +101,15 @@ const NewReviewForm = ({ postReview }) => {
       </label>
 
       <label htmlFor="reviewText">
-        Description:
-        <input
-          type="text"
+        <textarea
+          id="reviewText"
           name="reviewText"
           placeholder="Tell us more:"
+          rows="5"
+          cols="33"
           onChange={handleChange}
-          value={newReview.reviewText} />
+          value={newReview.reviewText}>
+        </textarea>
       </label>
 
       <input type="submit" value="Submit" />

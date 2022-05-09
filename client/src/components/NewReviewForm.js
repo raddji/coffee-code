@@ -50,11 +50,11 @@ const NewReviewForm = ({ postReview }) => {
     let symbolHolder = symbol;
     let optionArray = [];
 
-    const firstValue = <option value={""}>{`--Please choose a ${title}--`}</option>
+    const firstValue = <option key={0} value={""}>{`--Please choose a ${title}--`}</option>
     optionArray.push(firstValue);
 
     for (let i = 0; i < 5; i++) {
-      optionArray.push(<option value={(i + 1).toString()}>{symbolHolder}</option>);
+      optionArray.push(<option key={i + 1} value={(i + 1).toString()}>{symbolHolder}</option>);
       symbolHolder += symbol;
     }
     return optionArray;

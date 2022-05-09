@@ -7,14 +7,21 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
     address: "",
     zip: "",
     hours: "",
-    wifi: "",
-    parking: ""
+    wifi: false,
+    parking: false
   })
 
   const handleInputChange = event => {
     setNewCoffeeShop({
       ...newCoffeeShop,
       [event.currentTarget.name]: event.currentTarget.value
+    })
+  }
+
+  const handleCheckboxToggle = (event) => {
+    setNewCoffeeShop({
+      ...newCoffeeShop,
+      [event.currentTarget.name]: !newCoffeeShop[event.currentTarget.name]
     })
   }
 
@@ -31,8 +38,8 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
       address: "",
       zip: "",
       hours: "",
-      wifi: "",
-      parking: "",
+      wifi: false,
+      parking: false,
     })
   }
 
@@ -100,8 +107,8 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
           type="checkbox"
           id="wifi"
           name="wifi"
-          onChange={handleInputChange}
-          value={newCoffeeShop.wifi}
+          onChange={handleCheckboxToggle}
+          checked={newCoffeeShop.wifi}
         />
       </label>
 
@@ -111,8 +118,8 @@ const NewCoffeeShopForm = ({ postCoffeeShop }) => {
           type="checkbox"
           id="parking"
           name="parking"
-          onChange={handleInputChange}
-          value={newCoffeeShop.parking}
+          onChange={handleCheckboxToggle}
+          checked={newCoffeeShop.parking}
         />
       </label>
 

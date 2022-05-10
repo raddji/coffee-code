@@ -1,6 +1,9 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300,700&display=swap');
 @include foundation-everything;
+
+
 // place global css here
 *,
 *::before,
@@ -11,4 +14,26 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+.top-bar {
+  border-bottom: 2px solid #735738ad;
+}
+
+.menu-text {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+}
+  
+.review-rating {
+  display: flex;
+}
+
+.icon-list {
+  list-style: none;
+  display: flex;
+}
+
+.review-icon {
+  height: 15px;
 }

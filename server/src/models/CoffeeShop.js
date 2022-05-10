@@ -20,6 +20,20 @@ class CoffeeShop extends Model {
       },
     };
   }
+
+  static get relationMappings() {
+    const { Review } = require("./index.js")
+    return {
+      reviews: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: "coffeeShops.id",
+          to: "reviews.coffeeShopId"
+        }
+      }
+    }
+  }
 }
 
 module.exports = CoffeeShop;

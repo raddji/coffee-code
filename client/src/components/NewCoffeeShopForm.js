@@ -17,9 +17,9 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   if (shouldRedirect) {
-    <Redirect to="/coffee-shops" />;
+    return <Redirect to="/coffee-shops" />;
   }
-  
+
   const postCoffeeShop = async (newCoffeeShopData) => {
     try {
       const response = await fetch("/api/v1/coffee-shops", {
@@ -37,6 +37,7 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
         }
       } else {
         const body = await response.json();
+        debugger;
         setErrors([]);
         if (coffeeShops) {
           setCoffeeShops([...coffeeShops, body.newCoffeeShop]);
@@ -56,6 +57,13 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
     });
   };
 
+  const handleCheckboxToggle = (event) => {
+    setNewCoffeeShop({
+      ...newCoffeeShop,
+      [event.currentTarget.name]: !newCoffeeShop[event.currentTarget.name],
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     postCoffeeShop(newCoffeeShop);
@@ -69,8 +77,8 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
       address: "",
       zip: "",
       hours: "",
-      wifi: "",
-      parking: "",
+      wifi: false,
+      parking: false,
     });
   };
 
@@ -140,8 +148,8 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
             type="checkbox"
             id="wifi"
             name="wifi"
-            onChange={handleInputChange}
-            value={newCoffeeShop.wifi}
+            onChange={handleCheckboxToggle}
+            checked={newCoffeeShop.wifi}
           />
         </label>
 
@@ -151,8 +159,8 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
             type="checkbox"
             id="parking"
             name="parking"
-            onChange={handleInputChange}
-            value={newCoffeeShop.parking}
+            onChange={handleCheckboxToggle}
+            checked={newCoffeeShop.parking}
           />
         </label>
 

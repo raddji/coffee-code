@@ -23,7 +23,7 @@
 .menu-text {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300;
-  
+}
 .review-rating {
   display: flex;
 }
@@ -35,4 +35,8 @@
 
 .review-icon {
   height: 15px;
+}
+
+.tiles {
+  border: 1px solid red;
 }

@@ -76,7 +76,7 @@ const CoffeeShopShowPage = (props) => {
         <li>{wifiDisplay}</li>
         <li>{parkingDisplay}</li>
       </ul>
-      {reviewTiles}
+      <h2 className="tiles">{reviewTiles}</h2>
       <ErrorList errors={errors} />
       <NewReviewForm postReview={postReview} />
     </div>

@@ -31,6 +31,9 @@ const TopBar = ({ user }) => {
         </ul>
       </div>
       <div className="top-bar-right">
+        <Link className="button" to="/coffee-shops/new">
+          Add a Coffee Shop
+        </Link>
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>

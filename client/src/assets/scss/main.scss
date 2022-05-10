@@ -37,6 +37,70 @@
   height: 15px;
 }
 
-.tiles {
-  border: 1px solid red;
+//Coffeeshop tiles styles
+
+.list {
+  margin: auto;
+  width: 50%;
 }
+
+.tiles {
+  margin: auto;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: #fff4e4;
+  padding: 2em;
+}
+
+.tile {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 5px 5px burlywood;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.react-link:hover {
+  color: palevioletred;
+}
+
+body {
+  background-image: url("../../../public/images/coffee_beans.jpg");
+  background-repeat: repeat;
+}
+
+.show-page-tile {
+  padding: 1em;
+}
+
+div.tiles h2 {
+  text-align: center;
+}
+
+.show-page-container {
+  margin: auto;
+  width: 70%;
+  background-color: #fff4ef;
+  padding: 2em;
+}
+
+.review-tile {
+  margin: auto;
+  width: 80%;
+  box-shadow: 10px 5px 5px burlywood;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 1em;
+}
+
+div h4 {
+  margin-top: 30px;
+}
+
+// color: #7e0932;

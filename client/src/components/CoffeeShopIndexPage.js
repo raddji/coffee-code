@@ -62,15 +62,15 @@ const CoffeeShopIndexPage = (props) => {
   });
 
   return (
-    <div>
-      <h2>Code Brew Spots</h2>
-      <div>
+    <div className="list">
+      <div className="tiles">
+        <h2>Code Brew Spots</h2>
         {coffeeShopTiles}
-        <div>
-          <h2> Add a New Coffee Shop </h2>
-          <ErrorList errors={errors} />
-          <NewCoffeeShopForm postCoffeeShop={postCoffeeShop} />
-        </div>
+      </div>
+      <div>
+        {/* <h2> Add a New Coffee Shop </h2> */}
+        <ErrorList errors={errors} />
+        {/* <NewCoffeeShopForm postCoffeeShop={postCoffeeShop} /> */}
       </div>
     </div>
   )

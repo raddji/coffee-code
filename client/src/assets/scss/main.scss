@@ -23,9 +23,16 @@
 .menu-text {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300;
+  
+.review-rating {
+  display: flex;
+}
 
-  // .second-word {
-  //   font-weight: 600;
-  //   font-style: italic;
-  // }
+.icon-list {
+  list-style: none;
+  display: flex;
+}
+
+.review-icon {
+  height: 15px;
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CoffeeShopTile from "./CoffeeShopTile";
 import NewCoffeeShopForm from "./NewCoffeeShopForm";
-import translateServerErrors from "../services/translateServerErrors"
 import ErrorList from "./layout/ErrorList"
+import translateServerErrors from "../services/translateServerErrors"
 
 const CoffeeShopIndexPage = (props) => {
   const [coffeeShops, setCoffeeShops] = useState([]);
   const [errors, setErrors] = useState([])
+
   const getCoffeeShops = async () => {
     try {
       const response = await fetch("/api/v1/coffee-shops");
@@ -28,10 +29,9 @@ const CoffeeShopIndexPage = (props) => {
 
   const postCoffeeShop = async (newCoffeShopData) => {
     try {
-      const response = await fetch("/api/v1/coffee-shops",
-      {
+      const response = await fetch("/api/v1/coffee-shops", {
         method: "POST",
-        headers: new Headers({"Content-Type": "application/json"}), 
+        headers: new Headers({ "Content-Type": "application/json" }),
         body: JSON.stringify(newCoffeShopData)
       })
       if (!response.ok) {
@@ -66,9 +66,11 @@ const CoffeeShopIndexPage = (props) => {
       <h2>Code Brew Spots</h2>
       <div>
         {coffeeShopTiles}
-        <h2> Add a New Coffee Shop </h2>
-        <ErrorList errors={errors} />
-        <NewCoffeeShopForm postCoffeeShop={postCoffeeShop}/>
+        <div>
+          <h2> Add a New Coffee Shop </h2>
+          <ErrorList errors={errors} />
+          <NewCoffeeShopForm postCoffeeShop={postCoffeeShop} />
+        </div>
       </div>
     </div>
   )

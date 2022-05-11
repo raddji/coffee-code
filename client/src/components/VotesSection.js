@@ -13,7 +13,7 @@ const VotesSection = (props) => {
 
   return (
     <div className="review-votes-section">
-      {/* <label htmlFor="upvote" /> */}
+      <label htmlFor="upvote" />
       <button 
         className={`vote-button ${upvoteButton.className}`} 
         onClick={handleClick} 
@@ -22,7 +22,7 @@ const VotesSection = (props) => {
           ˄
       </button>
       <p className="vote-total">{sum}</p>
-      {/* <label htmlFor="downvote" /> */}
+      <label htmlFor="downvote" />
       <button 
         className={`vote-button ${downvoteButton.className}`} 
         onClick={handleClick} 

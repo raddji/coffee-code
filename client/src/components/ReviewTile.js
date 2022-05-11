@@ -46,7 +46,6 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, coffeeSho
         throw new Error(`${response.status} (${response.statusText})`)
       }
       const body = await response.json()
-      console.log(body)
       setVoteData(body)
     } catch(error) {
       console.error(error)

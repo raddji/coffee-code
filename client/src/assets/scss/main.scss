@@ -1,8 +1,6 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-
-
 // place global css here
 *,
 *::before,
@@ -53,6 +51,3 @@
     color: red;
   }
 }
-
-
-

@@ -22,8 +22,6 @@ reviewVotesRouter.get("/", async (req, res) => {
 reviewVotesRouter.post("/", async (req, res) => {
   const { reviewId } = req.params
   const userId = req.user.id
-
-  console.log("HEY YOU'RE POSTING")
   
   try {
     await Vote.query().insert({ userId, reviewId, vote: req.body.voteValue })

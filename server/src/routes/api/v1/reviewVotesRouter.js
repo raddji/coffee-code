@@ -23,6 +23,8 @@ reviewVotesRouter.post("/", async (req, res) => {
   const { reviewId } = req.params
   const userId = req.user.id
 
+  console.log("HEY YOU'RE POSTING")
+  
   try {
     await Vote.query().insert({ userId, reviewId, vote: req.body.voteValue })
     const votes = await Vote.query().select().where("reviewId", "=", `${reviewId}`)
@@ -36,10 +38,21 @@ reviewVotesRouter.post("/", async (req, res) => {
   }
 })
 
-// reviewVotesRouter.patch("/", async (req, res) => {
+reviewVotesRouter.patch("/", async (req, res) => {
+  const { reviewId } = req.params
+  const userId = req.user.id
 
-// })
-
-// Vote.query().select().where("reviewId", "=", "1")
+  try {
+    await Vote.query().patch({ vote: req.body.voteValue}).findOne({ reviewId, userId })
+    const votes = await Vote.query().select().where("reviewId", "=", `${reviewId}`)
+    const response = votesSummary(votes, userId)
+    return res.status(201).json(response)
+  } catch(errors) {
+    if (errors instanceof ValidationError) {
+      return res.status(422).json({ errors: errors.data })
+    }
+    return res.status(500).json({ errors })
+  }
+})
 
 export default reviewVotesRouter

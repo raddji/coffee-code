@@ -6,7 +6,8 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, coffeeSho
   const [voteData, setVoteData] = useState({
     sum: 0,
     userHasUpvoted: false,
-    userHasDownvoted: false
+    userHasDownvoted: false,
+    voteRecordExists: false
   })
 
   const getVoteData = async () => {
@@ -27,36 +28,28 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, coffeeSho
   }, [])
 
   const handleVote = async (voteValue) => {
-    if (voteData.userHasUpvoted || voteData.userHasDownvoted) {
-      try {
-        const response = await fetch(`/api/v1/coffee-shops/${coffeeShopId}/reviews/${id}/votes`, {
-          method: "patch",
-          headers: { "Content-Type": "application/json" },
-          body: { voteValue }
-        })
-        if (!response.ok) {
-          throw new Error(`${response.status} (${response.statusText})`)
-        }
-        const body = response.json()
-        setVoteData(body)
-      } catch(error) {
-        console.error(error)
+    let postMethod = "POST"
+
+    if (voteData.voteRecordExists){
+      postMethod = "PATCH"
+    }
+
+    try {
+      const response = await fetch(`/api/v1/coffee-shops/${coffeeShopId}/reviews/${id}/votes`, {
+        method: `${postMethod}`,
+        headers: {
+           "Content-Type": "application/json"
+          },
+        body: JSON.stringify({ voteValue })
+      })
+      if (!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`)
       }
-    } else {
-      try {
-        const response = await fetch(`/api/v1/coffee-shops/${coffeeShopId}/reviews/${id}/votes`, {
-          method: "post",
-          headers: { "Content-Type": "application/json" },
-          body: { voteValue }
-        })
-        if (!response.ok) {
-          throw new Error(`${response.status} (${response.statusText})`)
-        }
-        const body = await response.json()
-        setVoteData(body)
-      } catch(error) {
-        console.error(error)
-      }
+      const body = await response.json()
+      console.log(body)
+      setVoteData(body)
+    } catch(error) {
+      console.error(error)
     }
   }
 

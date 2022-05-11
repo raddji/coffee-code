@@ -8,18 +8,28 @@ const VotesSection = (props) => {
     handleVote(event.currentTarget.value)
   }
 
-  const upvoteButtonValue = userHasUpvoted ? 0 : 1
-  const downvoteButtonValue = userHasDownvoted ? 0 : -1
+  const upvoteButton = userHasUpvoted ? { value: 0, className: "upvoted" } : { value: 1, className: "" }
+  const downvoteButton = userHasDownvoted ? { value: 0, className: "downvoted" } : { value: -1, className: "" }
 
   return (
-    <div>
-      <label htmlFor="upvote" >
-        <button className="button" onClick={handleClick} id="upvote" value={upvoteButtonValue}>^</button>
-      </label>
-      Vote Total: {sum}
-      <label htmlFor="downvote" >
-        <button className="button" onClick={handleClick} id="downvote" value={downvoteButtonValue}>v</button>
-      </label>
+    <div className="review-votes-section">
+      {/* <label htmlFor="upvote" /> */}
+      <button 
+        className={`vote-button ${upvoteButton.className}`} 
+        onClick={handleClick} 
+        id="upvote" 
+        value={upvoteButton.value}>
+          ˄
+      </button>
+      <p className="vote-total">{sum}</p>
+      {/* <label htmlFor="downvote" /> */}
+      <button 
+        className={`vote-button ${downvoteButton.className}`} 
+        onClick={handleClick} 
+        id="downvote" 
+        value={downvoteButton.value}>
+          ˅
+      </button>
     </div>
   )
 }

@@ -46,9 +46,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/coffee-shops" component={CoffeeShopIndexPage}/>
-        <Route exact path="/coffee-shops/new" >
-          <NewCoffeeShopForm />
-        </Route>
+        <Route exact path="/coffee-shops/new" component={NewCoffeeShopForm}/>
         <Route exact path="/coffee-shops/:id" component={CoffeeShopShowPage}/>
       </Switch>
     </Router>

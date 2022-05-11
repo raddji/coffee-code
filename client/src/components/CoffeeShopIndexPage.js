@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import CoffeeShopTile from "./CoffeeShopTile";
-import NewCoffeeShopForm from "./NewCoffeeShopForm";
 
 const CoffeeShopIndexPage = (props) => {
   const [coffeeShops, setCoffeeShops] = useState([]);

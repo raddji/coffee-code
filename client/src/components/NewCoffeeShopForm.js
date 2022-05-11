@@ -10,8 +10,8 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
     address: "",
     zip: "",
     hours: "",
-    wifi: "",
-    parking: "",
+    wifi: false,
+    parking: false,
   });
   const [errors, setErrors] = useState([]);
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -37,13 +37,8 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
         }
       } else {
         const body = await response.json();
-        debugger;
         setErrors([]);
-        if (coffeeShops) {
-          setCoffeeShops([...coffeeShops, body.newCoffeeShop]);
-        } else {
-          setShouldRedirect(true);
-        }
+        setShouldRedirect(true);
       }
     } catch (err) {
       console.error(err);

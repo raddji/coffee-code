@@ -112,7 +112,7 @@ const NewReviewForm = ({ postReview }) => {
             value={newReview.reviewText}>
           </textarea>
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit This" className="button-cursor"/>
       </form>
     </div>
   );

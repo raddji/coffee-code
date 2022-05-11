@@ -120,3 +120,19 @@ ul {
 div.tile h5 {
   text-align: center;
 }
+
+.button-cursor {
+  padding: 0.85em 1em; 
+  border: 0;
+  font-weight: 600;
+}
+.button-cursor:hover {
+  cursor: grab;
+  background-color: rgb(214, 104, 7);
+  font-weight: bolder;
+  transition-property: background-color;
+  // transition-timing-function: ease-in;
+  transition-timing-function: ease-in-out;
+  transition: 0.5s;
+
+}

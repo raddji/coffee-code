@@ -68,9 +68,8 @@ const CoffeeShopIndexPage = (props) => {
         {coffeeShopTiles}
       </div>
       <div>
-        {/* <h2> Add a New Coffee Shop </h2> */}
         <ErrorList errors={errors} />
-        {/* <NewCoffeeShopForm postCoffeeShop={postCoffeeShop} /> */}
+        <NewCoffeeShopForm postCoffeeShop={postCoffeeShop}/>
       </div>
     </div>
   )

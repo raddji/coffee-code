@@ -65,7 +65,7 @@ const CoffeeShopShowPage = (props) => {
   const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking";
 
   return (
-    <div className="show-page-container">
+    <div className="show-page-container list">
       <h1>{coffeeShop.name}</h1>
       <p>{coffeeShop.address}</p>
       <p>

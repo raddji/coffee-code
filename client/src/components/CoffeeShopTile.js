@@ -13,7 +13,7 @@ const CoffeeShopTile = (props) => {
         <Link to={`/coffee-shops/${id}`} className="react-link">
           <h5>{name}</h5>
         </Link>
-        <div>
+        <div className="coffeeshop-info">
           <ul>
             <li>{city}</li>
             <li>{hours}</li>

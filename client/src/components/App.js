@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { hot } from "react-hot-loader/root";
 import CoffeeShopIndexPage from "./CoffeeShopIndexPage"
 import CoffeeShopShowPage from "./CoffeeShopShowPage";
+import { Link } from 'react-router-dom'
 
 import getCurrentUser from "../services/getCurrentUser";
 import "../assets/scss/main.scss";
@@ -31,7 +32,15 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-          <h2>Hello from react</h2>
+        <Link to={`/coffee-shops`} className="react-link">
+          <div className="list tiles landing-page">
+            <h2>Welcome to JavaSipped!</h2>
+            <div className="landing-paragraph">
+              <p>A place for coders who love coffee and want to share their favorite code brew spots</p>
+            </div>
+          </div>
+        </Link>
+          
         </Route>
         
         <Route exact path="/users/new" component={RegistrationForm} />

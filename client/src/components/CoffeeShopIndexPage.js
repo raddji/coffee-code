@@ -29,11 +29,10 @@ const CoffeeShopIndexPage = (props) => {
   });
 
   return (
-    <div>
-      <h2>Code Brew Spots</h2>
-      <div>
+    <div className="list">
+      <div className="tiles">
+        <h2>Code Brew Spots</h2>
         {coffeeShopTiles}
-        <NewCoffeeShopForm setCoffeeShops={setCoffeeShops} coffeeShops={coffeeShops} />
       </div>
     </div>
   );

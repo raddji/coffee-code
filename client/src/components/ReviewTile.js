@@ -4,7 +4,7 @@ import ReviewIcons from "./ReviewIcons"
 const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel }) => {
   
   return(
-    <div className="">
+    <div className="review-tile">
       <h5>{vibe}</h5>
       <p>{reviewText}</p>
       <div className="review-rating">

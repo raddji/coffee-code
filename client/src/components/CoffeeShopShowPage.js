@@ -65,17 +65,15 @@ const CoffeeShopShowPage = (props) => {
   const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking";
 
   return (
-    <div>
+    <div className="show-page-container list">
       <h1>{coffeeShop.name}</h1>
       <p>{coffeeShop.address}</p>
       <p>
         {coffeeShop.city} {coffeeShop.zip}
       </p>
       <p>{coffeeShop.hours}</p>
-      <ul>
-        <li>{wifiDisplay}</li>
-        <li>{parkingDisplay}</li>
-      </ul>
+      <p>{wifiDisplay}</p>
+      <p>{parkingDisplay}</p>
       {reviewTiles}
       <ErrorList errors={errors} />
       <NewReviewForm postReview={postReview} />

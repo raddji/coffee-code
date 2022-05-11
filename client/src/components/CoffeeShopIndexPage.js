@@ -69,7 +69,6 @@ const CoffeeShopIndexPage = (props) => {
       </div>
       <div>
         <ErrorList errors={errors} />
-        <NewCoffeeShopForm postCoffeeShop={postCoffeeShop}/>
       </div>
     </div>
   )

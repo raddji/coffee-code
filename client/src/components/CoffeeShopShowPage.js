@@ -72,10 +72,8 @@ const CoffeeShopShowPage = (props) => {
         {coffeeShop.city} {coffeeShop.zip}
       </p>
       <p>{coffeeShop.hours}</p>
-      <ul>
-        <li>{wifiDisplay}</li>
-        <li>{parkingDisplay}</li>
-      </ul>
+      <p>{wifiDisplay}</p>
+      <p>{parkingDisplay}</p>
       {reviewTiles}
       <ErrorList errors={errors} />
       <NewReviewForm postReview={postReview} />

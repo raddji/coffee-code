@@ -3,8 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300,700&display=swap');
 @include foundation-everything;
 
-
-// place global css here
 *,
 *::before,
 *::after {
@@ -37,8 +35,6 @@
   height: 15px;
 }
 
-//Coffeeshop tiles styles
-
 .list {
   margin: auto;
   width: 50%;
@@ -56,7 +52,6 @@
 .tile {
   display: flex;
   margin: auto;
-  // width: 80%;
   justify-content: center;
   box-shadow: 10px 5px 5px burlywood;
   margin-bottom: 10px;
@@ -83,14 +78,12 @@ div.tiles h2 {
 
 .show-page-container {
   margin: auto;
-  // width: 70%;
   background-color: #fff4ef;
   padding: 2em;
 }
 
 .review-tile {
   margin: auto;
-  // width: 80%;
   box-shadow: 10px 5px 5px burlywood;
   margin-bottom: 10px;
   border-radius: 20px;
@@ -113,7 +106,17 @@ div h4 {
 }
 
 .coffeeshop-info {
-  
+  width: 500px;
+  height: auto;
+  margin-left: 0;
+  padding-left: 50px;
 }
 
-// color: #7e0932;
+ul {
+  text-align: center;
+  list-style: none;
+}
+
+div.tile h5 {
+  text-align: center;
+}

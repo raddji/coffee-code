@@ -9,18 +9,16 @@ const CoffeeShopTile = (props) => {
 
   return (
     <div className="tile">
-      <div>
+      <div className="coffeeshop-info">
         <Link to={`/coffee-shops/${id}`} className="react-link">
           <h5>{name}</h5>
         </Link>
-        <div className="coffeeshop-info">
           <ul>
             <li>{city}</li>
             <li>{hours}</li>
             <li>{wifiDisplay}</li>
             <li>{parkingDisplay}</li>
           </ul>
-        </div>
       </div>
     </div>
   );

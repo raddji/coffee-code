@@ -137,7 +137,8 @@ div.tile h5 {
   transition-property: background-color;
   transition-timing-function: ease-in-out;
   transition: 0.5s;
-  }
+}
+
 .review-votes-section {
   display: flex;
   width: 15vw;
@@ -162,7 +163,7 @@ div.tile h5 {
   .downvoted {
     color: red;
   }
-
+  
   .menu {
     .button {
       margin: auto .6em;

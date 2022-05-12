@@ -25,4 +25,15 @@ coffeeShopReviewsRouter.post("/", async (req, res) => {
   }
 });
 
+
+coffeeShopReviewsRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Review.query().deleteById(id)
+    return res.status(200).json({message: "Successfully Deleted"})
+  } catch (error) {
+    return res.status(500).json({ errors: error });
+  }
+})
+
 export default coffeeShopReviewsRouter;

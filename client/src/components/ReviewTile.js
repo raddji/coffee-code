@@ -67,7 +67,7 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData 
   }
 
   return(
-    <div>
+    <div className="review-tile">
       <h5>{vibe}</h5>
       <p>{reviewText}</p>
       <div className="review-rating">

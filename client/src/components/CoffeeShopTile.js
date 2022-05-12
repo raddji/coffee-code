@@ -8,16 +8,18 @@ const CoffeeShopTile = (props) => {
   const parkingDisplay = parking ? "Parking Available" : "No Parking"
 
   return (
-    <div>
-      <Link to={`/coffee-shops/${id}`}>
-        <h5>{name}</h5>
-      </Link>
-      <ul>
-        <li>{city}</li>
-        <li>{hours}</li>
-        <li>{wifiDisplay}</li>
-        <li>{parkingDisplay}</li>
-      </ul>
+    <div className="tile">
+      <div className="coffeeshop-info">
+        <Link to={`/coffee-shops/${id}`} className="react-link">
+          <h5>{name}</h5>
+        </Link>
+          <ul>
+            <li>{city}</li>
+            <li>{hours}</li>
+            <li>{wifiDisplay}</li>
+            <li>{parkingDisplay}</li>
+          </ul>
+      </div>
     </div>
   );
 };

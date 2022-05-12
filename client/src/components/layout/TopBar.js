@@ -24,14 +24,21 @@ const TopBar = ({ user }) => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">App</li>
+          <li className="menu-text">Java<span className="second-word">Sipped</span></li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/coffee-shops">Home</Link>
           </li>
         </ul>
       </div>
       <div className="top-bar-right">
-        <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
+        <ul className="menu">
+          <li>
+            <Link className="button" to="/coffee-shops/new">
+              Add a Coffee Shop
+            </Link>
+          </li>
+          {user ? authenticatedListItems : unauthenticatedListItems}
+        </ul>
       </div>
     </div>
   );

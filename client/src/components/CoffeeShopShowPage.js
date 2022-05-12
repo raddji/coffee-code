@@ -57,7 +57,7 @@ const CoffeeShopShowPage = (props) => {
   };
 
   const reviewTiles = coffeeShop.reviews.map((review) => {
-    return <ReviewTile key={review.id} {...review} coffeeShopId={coffeeShop.id}  />
+    return <ReviewTile key={review.id} {...review} voteData={review.voteData}  />
   })
 
 

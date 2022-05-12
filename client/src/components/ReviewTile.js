@@ -1,59 +1,73 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import ReviewIcons from "./ReviewIcons"
 import VotesSection from "./VotesSection"
 
-const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, coffeeShopId }) => {
-  const [voteData, setVoteData] = useState({
-    sum: 0,
-    userHasUpvoted: false,
-    userHasDownvoted: false,
-    voteRecordExists: false
-  })
+const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData }) => {
+  const [currentVoteData, setCurrentVoteData] = useState(voteData) 
 
-  const getVoteData = async () => {
-    try {
-      const response = await fetch(`/api/v1/coffee-shops/${coffeeShopId}/reviews/${id}/votes`)
-      if (!response.ok) {
-        throw new Error(`${response.status} (${response.statusText})`)
+  const updateVoteData = (voteValue) => {
+    const delta = { ...currentVoteData, userVoteRecordExists: true }
+    if (currentVoteData.userHasUpvoted) {
+      delta.userHasUpvoted = false
+      if (voteValue === 0) {
+        delta.sum--
       }
-      const body = await response.json()
-      setVoteData(body)
-    } catch(error) {
-      console.error(error)
+      if (voteValue === -1) {
+        delta.userHasDownvoted = true
+        delta.sum -= 2
+      }
+      return delta
+    } 
+
+    if (currentVoteData.userHasDownvoted) {
+      delta.userHasDownvoted = false
+      if (voteValue === 0) {
+        delta.sum++
+      }
+
+      if (voteValue === 1) {
+        delta.userHasUpvoted = true
+        delta.sum += 2
+      }
+      return delta
+    }
+
+    if (voteValue === 1 && !currentVoteData.userHasUpvoted) {
+      delta.userHasUpvoted = true
+      delta.userHasDownvoted = false
+      delta.sum++
+      return delta
+    }
+
+    if (voteValue === -1 && !currentVoteData.userHasDownvoted) {
+      delta.userHasDownvoted = true
+      delta.userHasUpvoted = false
+      delta.sum--
+      return delta
     }
   }
 
-  useEffect(() => {
-    getVoteData()
-  }, [])
-
   const handleVote = async (voteValue) => {
-    let postMethod = "POST"
-
-    if (voteData.voteRecordExists){
-      postMethod = "PATCH"
-    }
-
     try {
-      const response = await fetch(`/api/v1/coffee-shops/${coffeeShopId}/reviews/${id}/votes`, {
-        method: `${postMethod}`,
+      const response = await fetch(`/api/v1/reviews/${id}/votes`, {
+        method: "POST",
         headers: {
            "Content-Type": "application/json"
           },
-        body: JSON.stringify({ voteValue })
+        body: JSON.stringify({ voteValue, userVoteRecordExists: currentVoteData.userVoteRecordExists })
       })
       if (!response.ok) {
         throw new Error(`${response.status} (${response.statusText})`)
       }
-      const body = await response.json()
-      setVoteData(body)
+      const delta = updateVoteData(parseInt(voteValue))
+      setCurrentVoteData(delta)
     } catch(error) {
       console.error(error)
     }
   }
 
   return(
-    <div className="">
+    <div>
       <h5>{vibe}</h5>
       <p>{reviewText}</p>
       <div className="review-rating">
@@ -80,7 +94,7 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, coffeeSho
       <VotesSection 
         reviewId={id} 
         handleVote={handleVote} 
-        {...voteData}
+        {...currentVoteData}
       />
     </div>
   )

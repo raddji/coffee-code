@@ -6,22 +6,22 @@ class VoteSeeder {
       {
         userId: 1,
         reviewId: 1,
-        vote: 1
+        value: 1
       },
       {
         userId: 1,
         reviewId: 2,
-        vote: -1
+        value: -1
       },
       {
         userId: 2,
         reviewId: 1,
-        vote: -1
+        value: -1
       },
       {
         userId: 2,
         reviewId: 2,
-        vote: -1
+        value: -1
       }
     ]
 

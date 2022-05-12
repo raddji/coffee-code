@@ -1,6 +1,5 @@
 import express from "express";
 import { Review } from "../../../models/index.js";
-import reviewVotesRouter from "./reviewVotesRouter.js";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { ValidationError } from "objection";
 
@@ -25,7 +24,5 @@ coffeeShopReviewsRouter.post("/", async (req, res) => {
     return res.status(500).json({ errors: error });
   }
 });
-
-coffeeShopReviewsRouter.use("/:reviewId/votes", reviewVotesRouter)
 
 export default coffeeShopReviewsRouter;

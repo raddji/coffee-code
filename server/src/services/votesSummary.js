@@ -1,26 +1,26 @@
 const votesSummary = (votesArray, userId) => {
-  const response = {
+  const voteData = {
     userHasUpvoted: false, 
     userHasDownvoted: false,
-    voteRecordExists: false, 
+    userVoteRecordExists: false, 
     sum: 0 
   }
 
   votesArray.forEach((voteRecord) => {
-    response.sum += voteRecord.vote
+    voteData.sum += voteRecord.value
     if (voteRecord.userId === userId) {
-      response.voteRecordExists = true
+      voteData.userVoteRecordExists = true
       
-      if (voteRecord.vote === 1) {
-        response.userHasUpvoted = true
+      if (voteRecord.value === 1) {
+        voteData.userHasUpvoted = true
       }
-      if (voteRecord.vote === -1) {
-        response.userHasDownvoted = true
+      if (voteRecord.value === -1) {
+        voteData.userHasDownvoted = true
       }
     }
   })
 
-  return response
+  return voteData
 }
 
 export default votesSummary

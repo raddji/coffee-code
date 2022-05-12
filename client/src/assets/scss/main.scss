@@ -18,10 +18,15 @@
   border-bottom: 2px solid #735738ad;
 }
 
+.top-bar-right {
+  display: flex;
+}
+
 .menu-text {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300;
 }
+  
 .review-rating {
   display: flex;
 }
@@ -109,7 +114,6 @@ div h4 {
   width: 500px;
   height: auto;
   margin-left: 0;
-  padding-left: 50px;
 }
 
 ul {
@@ -133,5 +137,10 @@ div.tile h5 {
   transition-property: background-color;
   transition-timing-function: ease-in-out;
   transition: 0.5s;
+}
 
+.menu {
+  .button {
+    margin: auto .6em;
+  }
 }

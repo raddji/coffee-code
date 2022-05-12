@@ -18,10 +18,15 @@
   border-bottom: 2px solid #735738ad;
 }
 
+.top-bar-right {
+  display: flex;
+}
+
 .menu-text {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300;
 }
+  
 .review-rating {
   display: flex;
 }
@@ -109,7 +114,6 @@ div h4 {
   width: 500px;
   height: auto;
   margin-left: 0;
-  padding-left: 50px;
 }
 
 ul {
@@ -139,7 +143,7 @@ div.tile h5 {
   width: 15vw;
   align-items: center;
   justify-content: space-between;
-  
+
   .vote-button {
     font-size: 2em;
     padding: 10px; 
@@ -157,5 +161,11 @@ div.tile h5 {
 
   .downvoted {
     color: red;
+  }
+
+  .menu {
+    .button {
+      margin: auto .6em;
+    }
   }
 }

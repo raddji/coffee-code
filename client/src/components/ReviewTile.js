@@ -1,5 +1,6 @@
 import React from "react"
 import ReviewIcons from "./ReviewIcons"
+import DeleteReview from "./DeleteReview"
 
 const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel }) => {
   
@@ -27,6 +28,9 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel }) => {
           fileName="megaphone.png"
           quantity={noiseLevel}
         />
+      </div>
+      <div>
+        <DeleteReview />
       </div>
     </div>
   )

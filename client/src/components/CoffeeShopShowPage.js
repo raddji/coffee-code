@@ -4,11 +4,17 @@ import ErrorList from "./layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ReviewTile from "./ReviewTile";
 
+
 const CoffeeShopShowPage = (props) => {
   const [coffeeShop, setCoffeeShop] = useState({ reviews: [] });
   const [errors, setErrors] = useState({});
 
   const { id } = props.match.params;
+
+  const updateReviews = coffeeShop.reviews.filter(review)
+    if (review.id == id) {}
+  })
+
   const getCoffeeShop = async () => {
     try {
       const response = await fetch(`/api/v1/coffee-shops/${id}`);
@@ -57,7 +63,7 @@ const CoffeeShopShowPage = (props) => {
   };
 
   const reviewTiles = coffeeShop.reviews.map((review) => {
-    return <ReviewTile key={review.id} {...review} />
+    return <ReviewTile key={review.id} {...review} updateReviews={updateReviews} />
   })
 
 
@@ -76,7 +82,6 @@ const CoffeeShopShowPage = (props) => {
       <p>{parkingDisplay}</p>
       {reviewTiles}
       <ErrorList errors={errors} />
-      <NewReviewForm postReview={postReview} />
     </div>
   );
 };

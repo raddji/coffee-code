@@ -1,15 +1,22 @@
+import votesSummary from "../services/votesSummary.js";
+
 class ReviewSerializer {
-  static getSummary(review) {
+  static async getSummary(review, currentUserId) {
     const disallowedAttributes = ["createdAt", "updatedAt", "coffeeShopId", "userId"];
-    const serialzedReview = {};
+    const serializedReview = {};
 
     Object.keys(review).forEach((attribute) => {
       if (!disallowedAttributes.includes(attribute)) {
-        serialzedReview[attribute] = review[attribute];
+        serializedReview[attribute] = review[attribute];
       }
     })
 
-    return serialzedReview;
+    const votes = await review.$relatedQuery("votes")
+    const voteData = votesSummary(votes, currentUserId)
+    serializedReview.voteData = voteData
+    serializedReview.canBeDeleted = review.userId === currentUserId ? true : false
+
+    return serializedReview;
   }
 }
 

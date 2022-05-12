@@ -4,16 +4,18 @@ import ErrorList from "./layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ReviewTile from "./ReviewTile";
 
-
 const CoffeeShopShowPage = (props) => {
   const [coffeeShop, setCoffeeShop] = useState({ reviews: [] });
   const [errors, setErrors] = useState({});
-
   const { id } = props.match.params;
 
-  const updateReviews = coffeeShop.reviews.filter(review)
-    if (review.id == id) {}
-  })
+  const handleDelete = (reviewId) => {
+    const updatedReviews = coffeeShop.reviews.filter((review) => review.id !== reviewId)
+    setCoffeeShop({
+      ...coffeeShop,
+      reviews: updatedReviews
+    })
+  }
 
   const getCoffeeShop = async () => {
     try {
@@ -63,9 +65,8 @@ const CoffeeShopShowPage = (props) => {
   };
 
   const reviewTiles = coffeeShop.reviews.map((review) => {
-    return <ReviewTile key={review.id} {...review} updateReviews={updateReviews} />
+    return <ReviewTile key={review.id} {...review} voteData={review.voteData} handleDelete={handleDelete} />
   })
-
 
   const wifiDisplay = coffeeShop.wifi ? "Wifi Available" : "No Wifi";
   const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking";
@@ -82,6 +83,7 @@ const CoffeeShopShowPage = (props) => {
       <p>{parkingDisplay}</p>
       {reviewTiles}
       <ErrorList errors={errors} />
+      <NewReviewForm postReview={postReview} />
     </div>
   );
 };

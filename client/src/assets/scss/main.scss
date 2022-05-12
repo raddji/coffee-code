@@ -133,5 +133,29 @@ div.tile h5 {
   transition-property: background-color;
   transition-timing-function: ease-in-out;
   transition: 0.5s;
+  }
+.review-votes-section {
+  display: flex;
+  width: 15vw;
+  align-items: center;
+  justify-content: space-between;
+  
+  .vote-button {
+    font-size: 2em;
+    padding: 10px; 
+  }
 
+  .upvoted {
+    color: green;
+  }
+  
+  .vote-total {
+    width: 75%;
+    margin-bottom: .5em;
+    text-align: center;
+  }
+
+  .downvoted {
+    color: red;
+  }
 }

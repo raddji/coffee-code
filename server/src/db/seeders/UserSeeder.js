@@ -8,6 +8,10 @@ class UserSeeder {
         email: "admin@admin.com",
         cryptedPassword: Bcrypt.hashSync("cheese", 10),
       },
+      {
+        email: "middleAgedJennifer@admin.com",
+        cryptedPassword: Bcrypt.hashSync("manhattan", 10),
+      }
     ];
 
     for (const singleUser of userData) {

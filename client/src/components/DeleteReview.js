@@ -1,37 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 const DeleteReview = props => {
-  const [reviews, setReviews] = useState({
 
-  })
   const deleteReview = async () => {
     try {
-      const response = await fetch("/api/v1/coffee-shops/:id/reviews", { 
+      const response = await fetch(`/api/v1/reviews/${props.reviewId}`, {
         method: "DELETE",
         headers: new Headers({
           "Content-Type": "application/json"
         })
       })
-      const body = await response.json()
-      
-      
-      
-      
-
+      if (!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`)
+      }
+      props.handleDelete(props.reviewId)
     } catch (error) {
-
-
+      console.error(error)
     }
   }
 
-
-
-
-
-
   return (
     <div>
-      <button className='button'>Delete Review</button>
+      <button onClick={deleteReview} className='button'>Delete Review</button>
     </div>
   )
 }

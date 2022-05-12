@@ -6,14 +6,14 @@ import { ValidationError } from "objection";
 const coffeeShopReviewsRouter = new express.Router({ mergeParams: true });
 
 coffeeShopReviewsRouter.post("/", async (req, res) => {
-  const { id } = req.params;
+  const { coffeeShopId } = req.params;
   try {
     const reviewBody = req.body;
     const cleanBodyData = cleanUserInput(reviewBody);
 
     const review = await Review.query().insertAndFetch({
       ...cleanBodyData,
-      coffeeShopId: id,
+      coffeeShopId: coffeeShopId,
       userId: req.user.id,
     });
     return res.status(201).json({ review });

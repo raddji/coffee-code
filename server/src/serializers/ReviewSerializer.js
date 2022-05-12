@@ -1,5 +1,7 @@
+import votesSummary from "../services/votesSummary.js";
+
 class ReviewSerializer {
-  static getSummary(review) {
+  static async getSummary(review, currentUserId) {
     const disallowedAttributes = ["createdAt", "updatedAt", "coffeeShopId", "userId"];
     const serialzedReview = {};
 
@@ -8,6 +10,10 @@ class ReviewSerializer {
         serialzedReview[attribute] = review[attribute];
       }
     })
+
+    const votes = await review.$relatedQuery("votes")
+    const voteData = votesSummary(votes, currentUserId)
+    serialzedReview.voteData = voteData
 
     return serialzedReview;
   }

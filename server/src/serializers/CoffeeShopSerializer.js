@@ -14,14 +14,12 @@ class CoffeeShopSerializer {
     return serialzedCoffeeShop;
   }
 
-  static async getDetails(coffeeShop) {
+  static async getDetails(coffeeShop, currentUserId) {
     const summarizedCoffeeShop = this.getSummary(coffeeShop);
 
     const reviews = await coffeeShop.$relatedQuery("reviews");
 
-    summarizedCoffeeShop.reviews = reviews.map((review) => {
-      return ReviewSerializer.getSummary(review);
-    })
+    summarizedCoffeeShop.reviews = await Promise.all(reviews.map((review) => ReviewSerializer.getSummary(review, currentUserId)))
 
     return summarizedCoffeeShop;
   }

@@ -6,7 +6,7 @@ class CoffeeShopSeeder {
       {
         name: "Tatte",
         city: "Boston",
-        address: " 125 summer st",
+        address: " 125 Summer St",
         zip: "02110",
         hours: "7:00 AM - 6:00 PM",
         wifi: true,
@@ -21,6 +21,24 @@ class CoffeeShopSeeder {
         wifi: false,
         parking: false,
       },
+      {
+        name: "Code Brew",
+        city: "Boston",
+        address: "123 Somewhere St",
+        zip: "04322",
+        hours: "7:00 AM - 6:00 PM",
+        wifi: true,
+        parking: false,
+      },
+      {
+        name: "Wired Puppy",
+        city: "Somerville",
+        address: "456 Place St",
+        zip: "04322",
+        hours: "7:00 AM - 6:00 PM",
+        wifi: true,
+        parking: false,
+      }
     ];
     for (const singleCoffeeShopData of coffeeShopsData) {
       const currentCoffeeShop = await CoffeeShop.query().findOne(singleCoffeeShopData);

@@ -7,7 +7,7 @@ const reviewsRouter = new express.Router()
 reviewsRouter.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const review = await Review.query().findOne({ id: id })
+    const review = await Review.query().findOne({ id: id, userId: req.user.id })
     await review.$relatedQuery("votes").delete()
 
     await Review.query().deleteById(id)

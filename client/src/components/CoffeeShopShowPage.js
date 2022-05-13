@@ -61,6 +61,7 @@ const CoffeeShopShowPage = (props) => {
           userVoteRecordExists: false, 
           sum: 0 
         }
+        review.canBeDeleted = true
         const updatedReviews = coffeeShop.reviews.concat(review);
         setErrors([]);
         setCoffeeShop({ ...coffeeShop, reviews: updatedReviews });

@@ -66,7 +66,7 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData,
       console.error(error)
     }
   }
-
+  debugger
   const deleteButton = canBeDeleted ? <DeleteReview reviewId={id} handleDelete={handleDelete} /> : ""
 
   return(

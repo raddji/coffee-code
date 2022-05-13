@@ -4,24 +4,6 @@ class CoffeeShopSeeder {
   static async seed() {
     const coffeeShopsData = [
       {
-        name: "Tatte",
-        city: "Boston",
-        address: " 125 Summer St",
-        zip: "02110",
-        hours: "7:00 AM - 6:00 PM",
-        wifi: true,
-        parking: false,
-      },
-      {
-        name: "Dunkin Donuts",
-        city: "Cambridge",
-        address: "2480 Mass Ave",
-        zip: "02139",
-        hours: "7:00 AM - 6:00 PM",
-        wifi: false,
-        parking: false,
-      },
-      {
         name: "Code Brew",
         city: "Boston",
         address: "123 Somewhere St",
@@ -37,6 +19,24 @@ class CoffeeShopSeeder {
         zip: "04322",
         hours: "7:00 AM - 6:00 PM",
         wifi: true,
+        parking: false,
+      },
+      {
+        name: "Tatte",
+        city: "Boston",
+        address: " 125 Summer St",
+        zip: "02110",
+        hours: "7:00 AM - 6:00 PM",
+        wifi: true,
+        parking: false,
+      },
+      {
+        name: "Dunkin Donuts",
+        city: "Cambridge",
+        address: "2480 Mass Ave",
+        zip: "02139",
+        hours: "7:00 AM - 6:00 PM",
+        wifi: false,
         parking: false,
       }
     ];

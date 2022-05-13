@@ -4,7 +4,7 @@ class ReviewSeeder {
   static async seed() {
     const reviewsData = [
       {
-        coffeeShopId: 1,
+        coffeeShopId: 3,
         userId: 1,
         rating: 2,
         price: 4,
@@ -13,7 +13,7 @@ class ReviewSeeder {
         reviewText: "Too loud, not a place for long hours to code. Great coffee though!",
       },
       {
-        coffeeShopId: 2,
+        coffeeShopId: 4,
         userId: 1,
         rating: 1,
         price: 2,
@@ -22,7 +22,7 @@ class ReviewSeeder {
         reviewText: "Not a big fan of their coffee, don't like people hanging around too long.",
       },
       {
-        coffeeShopId: 3,
+        coffeeShopId: 1,
         userId: 2,
         rating: 5,
         price: 2,
@@ -31,7 +31,7 @@ class ReviewSeeder {
         reviewText: "This is a really great place to code in public, to make sure everyone else knows that I am a programmer.",
       },
       {
-        coffeeShopId: 4,
+        coffeeShopId: 2,
         userId: 2,
         rating: 4,
         price: 3,

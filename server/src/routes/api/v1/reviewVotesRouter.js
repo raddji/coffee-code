@@ -7,7 +7,7 @@ const reviewVotesRouter = new express.Router({ mergeParams: true })
 reviewVotesRouter.post("/", async (req, res) => {
   const { reviewId } = req.params
   const userId = req.user.id
-
+  
   try {
     if (req.body.userVoteRecordExists) {
       await Vote.query().patch({ value: req.body.voteValue}).findOne({ reviewId, userId })

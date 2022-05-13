@@ -46,8 +46,14 @@ const CoffeeShopShowPage = (props) => {
           throw error;
         }
       } else {
-        const body = await response.json();
-        const updatedReviews = coffeeShop.reviews.concat(body.review);
+        const { review } = await response.json();
+        review.voteData = {
+          userHasUpvoted: false, 
+          userHasDownvoted: false,
+          userVoteRecordExists: false, 
+          sum: 0 
+        }
+        const updatedReviews = coffeeShop.reviews.concat(review);
         setErrors([]);
         setCoffeeShop({ ...coffeeShop, reviews: updatedReviews });
       }

@@ -78,7 +78,7 @@ const NewCoffeeShopForm = ({ coffeeShops, setCoffeeShops }) => {
   };
 
   return (
-    <div>
+    <div className="show-page-container list">
       <h2> Add a New Coffee Shop </h2>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>

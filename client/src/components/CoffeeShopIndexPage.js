@@ -30,7 +30,7 @@ const CoffeeShopIndexPage = (props) => {
   return (
     <div className="list">
       <div className="tiles">
-        <h2>Code Brew Spots</h2>
+        <h2>JavaSipped Spots</h2>
         {coffeeShopTiles}
       </div>
     </div>

@@ -40,32 +40,6 @@
   height: 15px;
 }
 
-.review-votes-section {
-  display: flex;
-  width: 15vw;
-  align-items: center;
-  justify-content: space-between;
-  
-  .vote-button {
-    font-size: 2em;
-    padding: 10px; 
-  }
-
-  .upvoted {
-    color: green;
-  }
-  
-  .vote-total {
-    width: 75%;
-    margin-bottom: .5em;
-    text-align: center;
-  }
-
-  .downvoted {
-    color: red;
-  }
-}
-
 .list {
   margin: auto;
   width: 50%;
@@ -165,8 +139,34 @@ div.tile h5 {
   transition: 0.5s;
 }
 
-.menu {
-  .button {
-    margin: auto .6em;
+.review-votes-section {
+  display: flex;
+  width: 15vw;
+  align-items: center;
+  justify-content: space-between;
+
+  .vote-button {
+    font-size: 2em;
+    padding: 10px; 
+  }
+
+  .upvoted {
+    color: green;
+  }
+  
+  .vote-total {
+    width: 75%;
+    margin-bottom: .5em;
+    text-align: center;
+  }
+
+  .downvoted {
+    color: red;
+  }
+  
+  .menu {
+    .button {
+      margin: auto .6em;
+    }
   }
 }

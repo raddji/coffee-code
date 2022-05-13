@@ -23,7 +23,6 @@ coffeeShopsRouter.get("/:id", async (req, res) => {
     const serializedCoffeeShop = await CoffeeShopSerializer.getDetails(coffeeShop, req.user.id)
     return res.status(200).json({ coffeeShop: serializedCoffeeShop })
   } catch (errors) {
-    console.log(errors)
     return res.status(500).json({ errors: errors })
   }
 })

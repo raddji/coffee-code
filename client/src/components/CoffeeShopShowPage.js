@@ -7,8 +7,16 @@ import ReviewTile from "./ReviewTile";
 const CoffeeShopShowPage = (props) => {
   const [coffeeShop, setCoffeeShop] = useState({ reviews: [] });
   const [errors, setErrors] = useState({});
-
   const { id } = props.match.params;
+
+  const handleDelete = (reviewId) => {
+    const updatedReviews = coffeeShop.reviews.filter((review) => review.id !== reviewId)
+    setCoffeeShop({
+      ...coffeeShop,
+      reviews: updatedReviews
+    })
+  }
+
   const getCoffeeShop = async () => {
     try {
       const response = await fetch(`/api/v1/coffee-shops/${id}`);
@@ -63,9 +71,8 @@ const CoffeeShopShowPage = (props) => {
   };
 
   const reviewTiles = coffeeShop.reviews.map((review) => {
-    return <ReviewTile key={review.id} {...review} voteData={review.voteData}  />
+    return <ReviewTile key={review.id} {...review} voteData={review.voteData} handleDelete={handleDelete} />
   })
-
 
   const wifiDisplay = coffeeShop.wifi ? "Wifi Available" : "No Wifi";
   const parkingDisplay = coffeeShop.parking ? "Parking Available" : "No Parking";

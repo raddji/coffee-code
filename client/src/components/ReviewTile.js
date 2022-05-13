@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import ReviewIcons from "./ReviewIcons"
+import DeleteReview from "./DeleteReview"
 import VotesSection from "./VotesSection"
 
-const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData }) => {
+const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData, handleDelete, canBeDeleted }) => {
   const [currentVoteData, setCurrentVoteData] = useState(voteData) 
 
   const updateVoteData = (voteValue) => {
@@ -66,6 +67,8 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData 
     }
   }
 
+  const deleteButton = canBeDeleted ? <DeleteReview reviewId={id} handleDelete={handleDelete} /> : ""
+
   return(
     <div className="review-tile">
       <h5>{vibe}</h5>
@@ -90,6 +93,9 @@ const ReviewTile = ({ vibe, reviewText, rating, price, noiseLevel, id, voteData 
           fileName="megaphone.png"
           quantity={noiseLevel}
         />
+      </div>
+      <div>
+        {deleteButton}
       </div>
       <VotesSection 
         reviewId={id} 

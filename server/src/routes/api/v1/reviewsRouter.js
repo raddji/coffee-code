@@ -17,6 +17,6 @@ reviewsRouter.delete("/:id", async (req, res) => {
   }
 })
 
-reviewsRouter.use("/:id/votes", reviewVotesRouter)
+reviewsRouter.use("/:reviewId/votes", reviewVotesRouter)
 
 export default reviewsRouter

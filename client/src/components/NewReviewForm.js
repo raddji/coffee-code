@@ -19,8 +19,8 @@ const NewReviewForm = ({ postReview }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    postReview(newReview);
     if (isValid(newReview)) {
-      postReview(newReview);
       clearForm();
     }
   };
